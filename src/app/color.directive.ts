@@ -1,23 +1,22 @@
 import {
   Directive,
   ElementRef,
-  HostBinding,
   HostListener,
   Input,
   OnInit
-} from "@angular/core";
+} from '@angular/core';
 
 @Directive({
-  selector: "[appColor]"
+  selector: '[appColor]'
 })
 export class ColorDirective implements OnInit {
-  @HostListener("mouseenter") private surligne() {
+  @HostListener('mouseenter') private surligne() {
     console.log(this.couleursSurlignage);
-    this.el.nativeElement.style.color = this.couleursSurlignage.color;
-    this.el.nativeElement.style.backgroundColor = this.couleursSurlignage.backgroundColor;
+    this.el.nativeElement.style.color = this.couleursSurlignage?.color ?? '';
+    this.el.nativeElement.style.backgroundColor = this.couleursSurlignage?.backgroundColor ?? '';
   }
 
-  @Input("appColor") public couleursSurlignage: {
+  @Input('appColor') public couleursSurlignage?: {
     color: string;
     backgroundColor: string;
   };
