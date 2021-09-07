@@ -11,9 +11,11 @@ import {
 })
 export class ColorDirective implements OnInit {
   @HostListener('mouseenter') private surligne() {
-    console.log(this.couleursSurlignage);
-    this.el.nativeElement.style.color = this.couleursSurlignage?.color ?? '';
-    this.el.nativeElement.style.backgroundColor = this.couleursSurlignage?.backgroundColor ?? '';
+    if (this.couleursSurlignage) {
+      console.log(this.couleursSurlignage);
+      this.el.nativeElement.style.color = this.couleursSurlignage.color;
+      this.el.nativeElement.style.backgroundColor = this.couleursSurlignage.backgroundColor;
+    }
   }
 
   @Input('appColor') public couleursSurlignage?: {
